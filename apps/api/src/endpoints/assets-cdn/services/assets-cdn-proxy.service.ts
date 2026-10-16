@@ -138,7 +138,7 @@ export class AssetsCdnProxyService implements OnModuleInit {
     }
     this.isSyncing = true;
     this.logger.log("--- Starting Global Background Sync ---");
-    const networks = ["mainnet", "testnet", "devnet"];
+    const networks = ["mainnet", "testnet", "devnet", "local-devnet"];
     const types = ["tokens", "identities", "accounts"];
     try {
       const tasks = networks.flatMap((network) =>

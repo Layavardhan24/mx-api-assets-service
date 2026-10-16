@@ -1,7 +1,7 @@
 import { PipeTransform, BadRequestException } from '@nestjs/common';
 
 export class NetworkPipe implements PipeTransform<string, string> {
-  private readonly allowed = ['mainnet', 'testnet', 'devnet'];
+  private readonly allowed = ['mainnet', 'testnet', 'devnet', 'local-devnet'];
   transform(value: string): string {
     const network = (value ?? '').toLowerCase();
     if (!network) {

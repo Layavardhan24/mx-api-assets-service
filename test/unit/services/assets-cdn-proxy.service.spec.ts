@@ -174,6 +174,45 @@ describe("AssetsCdnProxyService", () => {
         900
       );
     });
+
+    it("should fetch from devnet github path and store with local-devnet cache key and urls", async () => {
+      const mockTokens = [
+        {
+          name: "TOKEN-123456",
+          type: "dir",
+        },
+      ];
+
+      const mockResponse = {
+        json: jest.fn().mockResolvedValue(mockTokens),
+      } as unknown as Response;
+
+      const mockItemResponse = {
+        json: jest.fn().mockResolvedValue({ name: "Local Token", decimals: 18 }),
+      } as unknown as Response;
+
+      githubConnector.githubFetch.mockResolvedValue(mockResponse);
+      githubConnector.fetchWithTimeout.mockResolvedValue(mockItemResponse);
+
+      await service.syncCollection("local-devnet", "tokens");
+
+      expect(githubConnector.githubFetch).toHaveBeenCalledWith(
+        "https://api.github.com/repos/mock/repo/contents/local-devnet/tokens?ref=main"
+      );
+      expect(cacheService.set).toHaveBeenCalledWith(
+        "assets-cdn:local-devnet:tokens",
+        [
+          {
+            identifier: "TOKEN-123456",
+            name: "Local Token",
+            decimals: 18,
+            pngUrl: "/assets-cdn/local-devnet/tokens/TOKEN-123456/icon.png",
+            svgUrl: "/assets-cdn/local-devnet/tokens/TOKEN-123456/icon.svg",
+          },
+        ],
+        900
+      );
+    });
   });
 
   describe("isReady", () => {

@@ -9,7 +9,7 @@ import { AddressParam, IdentifierParam, IdentityParam, WildcardParams, WildcardI
 
 const NETWORK_PARAM = {
   name: "network",
-  enum: ["mainnet", "testnet", "devnet"],
+  enum: ["mainnet", "testnet", "devnet", "local-devnet"],
   required: false,
   description: "The network to fetch assets from. Default is MAINNET",
 } as const;

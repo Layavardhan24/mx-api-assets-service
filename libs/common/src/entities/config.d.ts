@@ -20,7 +20,7 @@ export interface Config {
   };
   libs: {
     common: {
-      network: "devnet" | "testnet" | "mainnet";
+      network: "devnet" | "testnet" | "mainnet" | "local-devnet";
       urls: {
         api: string;
       };

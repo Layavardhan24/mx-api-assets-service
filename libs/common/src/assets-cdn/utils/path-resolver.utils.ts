@@ -1,4 +1,5 @@
 export const networkMap: Record<string, string> = {
+  "local-devnet": "local-devnet",
   devnet: "devnet",
   testnet: "testnet",
   mainnet: "",
@@ -24,7 +25,7 @@ export function resolveParams(params: { p1?: string; p2?: string; p3?: string })
   const p2 = sanitize(params.p2);
   const p3 = sanitize(params.p3);
 
-  const networks = ["mainnet", "testnet", "devnet"];
+  const networks = ["mainnet", "testnet", "devnet", "local-devnet"];
   if (networks.includes(p1)) {
     return { network: p1, type: p2, id: p3 };
   }

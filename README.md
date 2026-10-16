@@ -113,7 +113,7 @@ Public endpoints are served on port `3004`, health/readiness on the public app, 
 | `GET`  | `/assets-cdn/:network/tokens/:identifier`       | Single token metadata                                |
 | `GET`  | `/assets-cdn/:network/tokens/:identifier/icon.png` · `icon.svg` | Token logo                     |
 
-`:network` accepts `devnet`, `testnet` or `mainnet`. Item identifiers passed to the collection route (for example `/assets-cdn/tokens/WEGLD-bd4d79`) are automatically delegated to the item handler, matching the behaviour of `tools.multiversx.com/assets-cdn`.
+`:network` accepts `devnet`, `testnet`, `mainnet`, or `local-devnet` (chain ID `L`, serving devnet assets for local development). Item identifiers passed to the collection route (for example `/assets-cdn/tokens/WEGLD-bd4d79`) are automatically delegated to the item handler, matching the behaviour of `tools.multiversx.com/assets-cdn`.
 
 Responses are served with `Cache-Control` headers (300s for collections, 1h for icons) and SVG icons additionally ship a restrictive `Content-Security-Policy` and `X-Content-Type-Options: nosniff`.
 
